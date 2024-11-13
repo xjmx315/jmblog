@@ -1,9 +1,9 @@
 package com.gdgstudy.jmblog.User;
 
-import lombok.NoArgsConstructor;
+import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
+import com.gdgstudy.jmblog.User.Dto.UserSignInDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -48,6 +48,7 @@ public class UserController {
         }
     }
 
+    //TODO: 무의마한 과정 줄이기
     @GetMapping("/me")
     public ResponseEntity<String> getLoginUser(){
         Optional<Users> result = userService.getLoginUser();

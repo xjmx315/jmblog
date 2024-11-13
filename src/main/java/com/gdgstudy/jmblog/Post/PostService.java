@@ -1,5 +1,6 @@
 package com.gdgstudy.jmblog.Post;
 
+import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
 import com.gdgstudy.jmblog.User.UserService;
 import com.gdgstudy.jmblog.User.Users;
 import jakarta.transaction.Transactional;

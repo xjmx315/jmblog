@@ -1,4 +1,4 @@
-package com.gdgstudy.jmblog.User;
+package com.gdgstudy.jmblog.User.Dto;
 
 import lombok.Getter;
 

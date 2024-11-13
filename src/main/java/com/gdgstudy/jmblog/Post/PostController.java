@@ -1,5 +1,6 @@
 package com.gdgstudy.jmblog.Post;
 
+import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
