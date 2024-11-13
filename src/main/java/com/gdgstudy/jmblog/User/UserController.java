@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 //@Controller
 @RestController
 @RequiredArgsConstructor
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/")
+    @PostMapping("/signUp")
     public ResponseEntity<String> crateUser(@RequestBody UserCreateDto userCreateDto){
         if (userService.crateUser(userCreateDto)) {
             return ResponseEntity.ok()
@@ -44,6 +46,17 @@ public class UserController {
             return ResponseEntity.ok()
                     .body("로그인 실패: 알 수 없는 오류입니다. ");
         }
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<String> getLoginUser(){
+        Optional<Users> result = userService.getLoginUser();
+        if (result.isEmpty()){
+            return ResponseEntity.ok()
+                    .body("로그인된 유저가 없습니다. ");
+        }
+        return ResponseEntity.ok()
+                .body(result.get().toString());
     }
 
 }

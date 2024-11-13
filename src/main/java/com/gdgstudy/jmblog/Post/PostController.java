@@ -15,11 +15,16 @@ public class PostController {
         return ResponseEntity.ok()
                 .body("Hello");
     }
+
     @PostMapping("/")
     public ResponseEntity<String> newPost(@RequestBody PostCrateDto postCrateDto){
         int result = postService.newpost(postCrateDto);
+        if (result == 0) {
+            return ResponseEntity.ok()
+                    .body("post 완료");
+        }
         return ResponseEntity.ok()
-                .body("post 완료");
+                .body("post 실패");
     }
 
 }
