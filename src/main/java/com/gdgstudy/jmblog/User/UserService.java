@@ -31,12 +31,14 @@ public class UserService {
             return -1;
         }
         Users user = user_.get();
-        if (user.getPasswd() == userSignInDto.getPasswd()){
+        if (user.getPasswd().equals(userSignInDto.getPasswd())){
             httpSession.setAttribute("username", user.getName());
             return 0;
         }
         return -2;
     }
 
-    
+    public Optional<Users> getLoginUser() {
+        return userRepository.findByName((String)httpSession.getAttribute("username"));
+    }
 }

@@ -1,12 +1,12 @@
 package com.gdgstudy.jmblog.User;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.gdgstudy.jmblog.Post.Post;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +18,10 @@ public class Users {
     String name;
     String passwd;
     String email;
+
+    @OneToMany
+    List<Post> posts;
+
 
     @Builder
     public Users(String name, String passwd, String email){
@@ -34,5 +38,7 @@ public class Users {
                 .build();
     }
 
-
+    public String toString(){
+        return this.name + this.Id;
+    }
 }
