@@ -10,15 +10,9 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     private final PostService postService;
 
-    @GetMapping("/echo")
-    public ResponseEntity<String> postEcho(){
-        return ResponseEntity.ok()
-                .body("Hello");
-    }
-
-    @PostMapping("/")
+    @PostMapping("/new")
     public ResponseEntity<String> newPost(@RequestBody PostCrateDto postCrateDto){
-        int result = postService.newpost(postCrateDto);
+        int result = postService.newPost(postCrateDto);
         if (result == 0) {
             return ResponseEntity.ok()
                     .body("post 완료");
@@ -27,4 +21,10 @@ public class PostController {
                 .body("post 실패");
     }
 
+    @GetMapping("/mine")
+    public ResponseEntity<String> myPosts(){
+        String result = postService.myPosts();
+        return ResponseEntity.ok()
+                .body(result);
+    }
 }
