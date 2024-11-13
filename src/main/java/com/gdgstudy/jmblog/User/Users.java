@@ -1,6 +1,7 @@
 package com.gdgstudy.jmblog.User;
 
 import com.gdgstudy.jmblog.Post.Post;
+import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,9 +20,8 @@ public class Users {
     String passwd;
     String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "users")
     List<Post> posts;
-
 
     @Builder
     public Users(String name, String passwd, String email){
