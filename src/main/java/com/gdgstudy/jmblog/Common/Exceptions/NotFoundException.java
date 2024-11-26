@@ -1,4 +1,4 @@
-package com.gdgstudy.jmblog.User.Exceptions;
+package com.gdgstudy.jmblog.Common.Exceptions;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {

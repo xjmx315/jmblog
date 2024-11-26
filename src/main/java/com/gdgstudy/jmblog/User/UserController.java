@@ -1,5 +1,6 @@
 package com.gdgstudy.jmblog.User;
 
+import com.gdgstudy.jmblog.Common.CommonResponse;
 import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
 import com.gdgstudy.jmblog.User.Dto.UserSignInDto;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +17,10 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signUp")
-    public ResponseEntity<String> crateUser(@RequestBody UserCreateDto userCreateDto){
-        if (userService.crateUser(userCreateDto)) {
-            return ResponseEntity.ok()
-                    .body("유저 생성 완료. ");
-        }
-        else{
-            return ResponseEntity.ok()
-                    .body("유저 생성 실패... ");
-        }
+    public ResponseEntity<CommonResponse> crateUser(@RequestBody UserCreateDto userCreateDto){
+        userService.crateUser(userCreateDto);
+        return ResponseEntity.ok()
+                .body(new CommonResponse(201, "user created"));
     }
 
     @PostMapping("/signIn")
