@@ -4,6 +4,7 @@ import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
 import com.gdgstudy.jmblog.User.Dto.UserSignInDto;
 import com.gdgstudy.jmblog.User.Exceptions.UserNameDuplicationException;
 import com.gdgstudy.jmblog.User.Exceptions.UserNotFoundException;
+import com.gdgstudy.jmblog.User.Exceptions.UserPermissionException;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,18 +31,15 @@ public class UserService {
         }
     }
 
-    public int signInUser(UserSignInDto userSignInDto) {
+    public void signInUser(UserSignInDto userSignInDto) {
         Users user_ = userRepository.findByName(userSignInDto.getUsername())
-                .orElseThrow(() -> new UserNotFoundException(""));
-        if (user_.isEmpty()){
-            throw new UserNotFoundException("");
+                .orElseThrow(() -> new UserNotFoundException());
+        if (user_.getPasswd().equals(userSignInDto.getPasswd())){
+            httpSession.setAttribute("username", user_.getName());
         }
-        Users user = user_.get();
-        if (user.getPasswd().equals(userSignInDto.getPasswd())){
-            httpSession.setAttribute("username", user.getName());
-            return 0;
+        else{
+            throw new UserPermissionException();
         }
-        return -2;
     }
 
     public Optional<Users> getLoginUser() {
