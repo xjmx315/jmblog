@@ -1,4 +1,30 @@
+# Intro
+안녕하세요. 재민 블로그 프로젝트 입니다. 
+GDGoc 스터디 활동의 일환으로 스프링 개발 실습 목적으로 만든 재민이의 첫 프로젝트!
+읽어주셔서 감사합니다. 
+
+#### email: hahapjm1234@gmail.com
+
+# ERD
 ![image](https://github.com/user-attachments/assets/294e6f5a-243e-420e-aba5-7b21a389a2df)
+
+# Request/Response Format
+## Request
+"./api" 로 시작하는 주소에서 api가 제공됩니다.
+
+## Response
+json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다.
+
+```json
+{
+  "code": 200,
+  "massage": "done.",
+  "data": {}
+}
+```
+
+# API
+## 
 
 (Post)
 /user
