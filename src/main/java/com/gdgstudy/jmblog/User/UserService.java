@@ -2,6 +2,7 @@ package com.gdgstudy.jmblog.User;
 
 import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
 import com.gdgstudy.jmblog.User.Dto.UserSignInDto;
+import com.gdgstudy.jmblog.User.Exceptions.NotFoundException;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,8 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final HttpSession httpSession;
+
+    //유효성 체크 기능 만들어보기
 
     @Transactional
     public boolean crateUser(UserCreateDto userCreateDto) {
@@ -28,9 +31,10 @@ public class UserService {
     }
 
     public int signInUser(UserSignInDto userSignInDto) {
-        Optional<Users> user_ = userRepository.findByName(userSignInDto.getUsername());
+        Users user_ = userRepository.findByName(userSignInDto.getUsername())
+                .orElseThrow(() -> new NotFoundException(""));
         if (user_.isEmpty()){
-            return -1;
+            throw NotFoundException("");
         }
         Users user = user_.get();
         if (user.getPasswd().equals(userSignInDto.getPasswd())){
@@ -41,6 +45,7 @@ public class UserService {
     }
 
     public Optional<Users> getLoginUser() {
+        Object tmp = httpSession.getAttribute("username");
         return userRepository.findByName((String)httpSession.getAttribute("username"));
     }
 }
