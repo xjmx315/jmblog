@@ -33,13 +33,9 @@ public class UserController {
     //TODO: 무의마한 과정 줄이기
     @GetMapping("/me")
     public ResponseEntity<String> getLoginUser(){
-        Optional<Users> result = userService.getLoginUser();
-        if (result.isEmpty()){
-            return ResponseEntity.ok()
-                    .body("로그인된 유저가 없습니다. ");
-        }
+        Users result = userService.getLoginUser();
         return ResponseEntity.ok()
-                .body(result.get().toString());
+                .body(result.toString());
     }
 
 }
