@@ -42,6 +42,8 @@ public class UserService {
         }
     }
 
+    //TODO: 로그인 된 유저가 없으면 어떻게 할 지 처리해야함.
+    //TODO: 검색했는데 유저가 없으면?
     public Optional<Users> getLoginUser() {
         Object tmp = httpSession.getAttribute("username");
         return userRepository.findByName((String)httpSession.getAttribute("username"));
