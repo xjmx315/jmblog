@@ -1,7 +1,9 @@
 package com.gdgstudy.jmblog.Common;
 
+import com.gdgstudy.jmblog.User.Exceptions.NoLoginUserException;
 import com.gdgstudy.jmblog.User.Exceptions.UserNameDuplicationException;
 import com.gdgstudy.jmblog.User.Exceptions.UserNotFoundException;
+import com.gdgstudy.jmblog.User.Exceptions.UserPermissionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,5 +23,17 @@ public final class GlobalExceptionHandler {
     public ResponseEntity<CommonResponse> handlerUserNameDuplicationException(UserNameDuplicationException e){
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(new CommonResponse(202, e.getMessage()));
+    }
+
+    @ExceptionHandler(NoLoginUserException.class)
+    public ResponseEntity<CommonResponse> handlerNoLoginUserException(NoLoginUserException e){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new CommonResponse(401, e.getMessage()));
+    }
+
+    @ExceptionHandler(UserPermissionException.class)
+    public ResponseEntity<CommonResponse> handlerUserPermissionException(UserPermissionException e){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new CommonResponse(401, e.getMessage()));
     }
 }
