@@ -2,6 +2,7 @@ package com.gdgstudy.jmblog.User;
 
 import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
 import com.gdgstudy.jmblog.User.Dto.UserSignInDto;
+import com.gdgstudy.jmblog.User.Exceptions.NoLoginUserException;
 import com.gdgstudy.jmblog.User.Exceptions.UserNameDuplicationException;
 import com.gdgstudy.jmblog.User.Exceptions.UserNotFoundException;
 import com.gdgstudy.jmblog.User.Exceptions.UserPermissionException;
@@ -44,8 +45,10 @@ public class UserService {
 
     //TODO: 로그인 된 유저가 없으면 어떻게 할 지 처리해야함.
     //TODO: 검색했는데 유저가 없으면?
-    public Optional<Users> getLoginUser() {
+    public Users getLoginUser() {
         Object tmp = httpSession.getAttribute("username");
-        return userRepository.findByName((String)httpSession.getAttribute("username"));
+        Users result = userRepository.findByName((String)httpSession.getAttribute("username"))
+                .orElseThrow(() -> new NoLoginUserException());
+        return result;
     }
 }
