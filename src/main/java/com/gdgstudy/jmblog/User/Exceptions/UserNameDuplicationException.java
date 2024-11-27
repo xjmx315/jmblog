@@ -1,6 +1,8 @@
 package com.gdgstudy.jmblog.User.Exceptions;
 
-public class UserNameDuplicationException extends RuntimeException {
+import com.gdgstudy.jmblog.Common.Exceptions.RejectedRequestException;
+
+public class UserNameDuplicationException extends RejectedRequestException {
     public UserNameDuplicationException() {
         super("Duplicate Username");
     }
