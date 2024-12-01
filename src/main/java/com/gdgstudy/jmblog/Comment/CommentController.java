@@ -1,7 +1,7 @@
 package com.gdgstudy.jmblog.Comment;
 
 import com.gdgstudy.jmblog.Comment.Dto.CommentCreateDto;
-import com.gdgstudy.jmblog.Common.CommonResponse;
+import com.gdgstudy.jmblog._devCommon.CommonResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +19,8 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<CommonResponse> newComment(@RequestBody CommentCreateDto commentCreateDto){
-        CommonResponse response = commentService.newComment(commentCreateDto);
+        commentService.newComment(commentCreateDto);
         return ResponseEntity.ok()
-                .body(response);
-        }
+                .body(new CommonResponse(200, "Comment Created"));
     }
 }
