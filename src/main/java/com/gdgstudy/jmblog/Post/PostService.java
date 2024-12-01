@@ -1,6 +1,7 @@
 package com.gdgstudy.jmblog.Post;
 
 import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
+import com.gdgstudy.jmblog.Post.Exceptions.PostNotFoundException;
 import com.gdgstudy.jmblog.User.Exceptions.NoLoginUserException;
 import com.gdgstudy.jmblog.User.UserService;
 import com.gdgstudy.jmblog.User.Users;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +32,12 @@ public class PostService {
         Users user = userService.getLoginUser();
         List<Post> postList = postRepository.findByUsers(user);
         return postList;
+    }
+
+    @Transactional
+    public void deletePost(long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new PostNotFoundException());
+        postRepository.delete(post);
     }
 }

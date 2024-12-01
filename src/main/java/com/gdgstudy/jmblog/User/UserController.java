@@ -1,13 +1,11 @@
 package com.gdgstudy.jmblog.User;
 
-import com.gdgstudy.jmblog.Common.CommonResponse;
+import com.gdgstudy.jmblog._devCommon.CommonResponse;
 import com.gdgstudy.jmblog.User.Dto.UserCreateDto;
 import com.gdgstudy.jmblog.User.Dto.UserSignInDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 //@Controller
 @RestController
@@ -32,10 +30,10 @@ public class UserController {
 
     //TODO: 무의마한 과정 줄이기
     @GetMapping("/me")
-    public ResponseEntity<String> getLoginUser(){
+    public ResponseEntity<CommonResponse> getLoginUser(){
         Users result = userService.getLoginUser();
         return ResponseEntity.ok()
-                .body(result.toString());
+                .body(new CommonResponse(200, result.toString()));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.gdgstudy.jmblog.Common;
+package com.gdgstudy.jmblog._devCommon;
 
 public class DataResponse<T> extends CommonResponse {
     T data;

@@ -1,6 +1,6 @@
 package com.gdgstudy.jmblog.User.Exceptions;
 
-import com.gdgstudy.jmblog.Common.Exceptions.PermissionException;
+import com.gdgstudy.jmblog._devCommon.Exceptions.PermissionException;
 
 public class UserPermissionException extends PermissionException {
     public UserPermissionException() {

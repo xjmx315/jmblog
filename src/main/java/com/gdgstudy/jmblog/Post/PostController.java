@@ -1,7 +1,7 @@
 package com.gdgstudy.jmblog.Post;
 
-import com.gdgstudy.jmblog.Common.CommonResponse;
-import com.gdgstudy.jmblog.Common.DataResponse;
+import com.gdgstudy.jmblog._devCommon.CommonResponse;
+import com.gdgstudy.jmblog._devCommon.DataResponse;
 import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,4 +28,12 @@ public class PostController {
         return ResponseEntity.ok()
                 .body(new DataResponse<List<Post>>(200, "your posts", result));
     }
+
+    @DeleteMapping("/{Id}")
+    public ResponseEntity<CommonResponse> deletePost(@PathVariable("Id") long id){
+        postService.deletePost(id);
+        return ResponseEntity.ok()
+                .body(new CommonResponse(200, "Post Deleted"));
+    }
+
 }

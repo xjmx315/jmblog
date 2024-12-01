@@ -47,7 +47,7 @@ public class UserService {
     //TODO: 검색했는데 유저가 없으면?
     public Users getLoginUser() {
         Object tmp = httpSession.getAttribute("username");
-        Users result = userRepository.findByName((String)httpSession.getAttribute("username"))
+        Users result = userRepository.findByName((String)tmp)
                 .orElseThrow(() -> new NoLoginUserException());
         return result;
     }

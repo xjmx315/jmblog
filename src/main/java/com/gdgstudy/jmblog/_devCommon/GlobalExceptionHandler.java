@@ -1,8 +1,8 @@
-package com.gdgstudy.jmblog.Common;
+package com.gdgstudy.jmblog._devCommon;
 
-import com.gdgstudy.jmblog.Common.Exceptions.NotFoundException;
-import com.gdgstudy.jmblog.Common.Exceptions.PermissionException;
-import com.gdgstudy.jmblog.Common.Exceptions.RejectedRequestException;
+import com.gdgstudy.jmblog._devCommon.Exceptions.NotFoundException;
+import com.gdgstudy.jmblog._devCommon.Exceptions.PermissionException;
+import com.gdgstudy.jmblog._devCommon.Exceptions.RejectedRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package com.gdgstudy.jmblog.Common;
+package com.gdgstudy.jmblog._devCommon;
 
 import lombok.Getter;
 
