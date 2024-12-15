@@ -1,6 +1,7 @@
 package com.gdgstudy.jmblog.Post;
 
 import com.gdgstudy.jmblog.Post.Dto.PostFullDto;
+import com.gdgstudy.jmblog.Post.Dto.PostSimpleDto;
 import com.gdgstudy.jmblog._devCommon.CommonResponse;
 import com.gdgstudy.jmblog._devCommon.DataResponse;
 import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
@@ -24,10 +25,10 @@ public class PostController {
     }
 
     @GetMapping("/mine")
-    public ResponseEntity<DataResponse<List<Post>>> myPosts(){
-        List<Post> posts = postService.myPosts();
+    public ResponseEntity<DataResponse<List<PostSimpleDto>>> myPosts(){
+        List<PostSimpleDto> posts = postService.myPosts();
         return ResponseEntity.ok()
-                .body(new DataResponse<List<Post>>(200, "your posts", posts));
+                .body(new DataResponse<List<PostSimpleDto>>(200, "your posts", posts));
     }
 
     @GetMapping("/{Id}")

@@ -2,6 +2,7 @@ package com.gdgstudy.jmblog.Post;
 
 import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
 import com.gdgstudy.jmblog.Post.Dto.PostFullDto;
+import com.gdgstudy.jmblog.Post.Dto.PostSimpleDto;
 import com.gdgstudy.jmblog.Post.Exceptions.PostNotFoundException;
 import com.gdgstudy.jmblog.User.Exceptions.NoLoginUserException;
 import com.gdgstudy.jmblog.User.UserService;
@@ -29,9 +30,13 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public List<Post> myPosts() {
+    public List<PostSimpleDto> myPosts() {
         Users user = userService.getLoginUser();
-        List<Post> postList = postRepository.findByUsers(user);
+        List<Post> postRowList = postRepository.findByUsers(user);
+        List<PostSimpleDto> postList = new ArrayList<PostSimpleDto>();
+        for (Post p:postRowList){
+            postList.add(PostSimpleDto.of(p));
+        }
         return postList;
     }
 
