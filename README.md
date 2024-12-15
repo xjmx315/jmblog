@@ -13,7 +13,7 @@ GDGoc 스터디 활동의 일환으로 스프링 개발 실습 목적으로 만�
 "./api" 로 시작하는 주소에서 api가 제공됩니다.
 
 ## Response
-json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다.
+json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다. 
 
 ```json
 {
@@ -24,8 +24,12 @@ json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다
 ```
 
 # API
-## 
-
+모든 api는
+"./api"로 시작합니다. 
+## 1. users
+| URL   | Method | Request | Response |
+|-------|--------|--|----------|
+| /user | Post   |  | s        |
 (Post)
 /user
 (Request)

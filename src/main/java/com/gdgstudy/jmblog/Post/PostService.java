@@ -1,6 +1,7 @@
 package com.gdgstudy.jmblog.Post;
 
 import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
+import com.gdgstudy.jmblog.Post.Dto.PostFullDto;
 import com.gdgstudy.jmblog.Post.Exceptions.PostNotFoundException;
 import com.gdgstudy.jmblog.User.Exceptions.NoLoginUserException;
 import com.gdgstudy.jmblog.User.UserService;
@@ -39,5 +40,11 @@ public class PostService {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException());
         postRepository.delete(post);
+    }
+
+    public PostFullDto getPost(long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new PostNotFoundException());
+        return PostFullDto.of(post);
     }
 }
