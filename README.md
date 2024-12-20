@@ -27,12 +27,18 @@ json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다
 모든 api는
 "./api"로 시작합니다. 
 ## 1. users
-| URL   | Method | Request | Response |
-|-------|--------|--|----------|
-| /user | Post   |  | s        |
+| URL          | Method | Request | Response |
+|--------------|--------|---------|----------|
+| /user/signUp | Post   |         | s        |
+| /user/signIn | Post   |         |          |
+| /user/me     | Get    |         |          |
+
+
+
 (Post)
 /user
 (Request)
+
 >
 {
   "name" : "jaemin",
@@ -58,3 +64,13 @@ json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다
 >"로그인 성공"
 >"로그인 실패: 아이디가 존재하지 않습니다. "
 >"로그인 실패: 비밀번호가 올바르지 않습니다. "
+
+
+## 2. post
+| URL             | Method | Request | Response |
+|-----------------|--------|---------|----------|
+| /post/new       | Post   |         | s        |
+| /post/mine      | Get    |         |          |
+| /post/{Id}      | Get    |         |          |
+| /post/{Id}      | Delete |         |          |
+| /post/like/{Id} | Get    |         |          |
