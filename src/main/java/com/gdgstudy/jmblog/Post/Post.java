@@ -2,6 +2,7 @@ package com.gdgstudy.jmblog.Post;
 
 import com.gdgstudy.jmblog.Post.Dto.PostCrateDto;
 import com.gdgstudy.jmblog.User.Users;
+import com.gdgstudy.jmblog._devCommon.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Getter
-public class Post {
+public class Post extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column(name = "post")

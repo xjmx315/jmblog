@@ -51,5 +51,4 @@ public class PostController {
         return ResponseEntity.ok()
                 .body(new DataResponse<Integer>(200, "like is turned to " + like, like));
     }
-
 }
