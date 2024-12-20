@@ -48,4 +48,8 @@ public class Post extends BaseTimeEntity {
         this.liked += 1;
         return this.liked;
     }
+
+    public void addViewCount(){
+        this.viewCount += 1;
+    }
 }

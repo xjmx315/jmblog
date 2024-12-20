@@ -47,10 +47,13 @@ public class PostService {
         postRepository.delete(post);
     }
 
+    @Transactional
     public PostFullDto getPost(long id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException());
-        return PostFullDto.of(post);
+        PostFullDto postFullDto = PostFullDto.of(post);
+        postRepository.save(post);
+        return postFullDto;
     }
 
     @Transactional

@@ -26,6 +26,7 @@ public class PostFullDto {
     }
 
     public static PostFullDto of(Post post){
+        post.addViewCount();
         return PostFullDto.builder()
                 .title(post.getTitle())
                 .content(post.getContent())
