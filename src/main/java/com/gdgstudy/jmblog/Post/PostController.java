@@ -46,10 +46,10 @@ public class PostController {
     }
 
     @GetMapping("/like/{Id}")
-    public ResponseEntity<CommonResponse> likePost(@PathVariable("Id") long id){
+    public ResponseEntity<DataResponse<Integer>> likePost(@PathVariable("Id") long id){
         int like = postService.likePost(id);
         return ResponseEntity.ok()
-                .body(new CommonResponse(200, "like is turned to "+like));
+                .body(new DataResponse<Integer>(200, "like is turned to " + like, like));
     }
 
 }
