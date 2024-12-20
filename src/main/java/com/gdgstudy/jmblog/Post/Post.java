@@ -41,6 +41,10 @@ public class Post {
                 .liked(0)
                 .users(users)
                 .build();
+    }
 
+    public int addLike(){ //나중에 userId를 받으면 유저당 1번의 라이크만 하기도 가능할듯
+        this.liked += 1;
+        return this.liked;
     }
 }

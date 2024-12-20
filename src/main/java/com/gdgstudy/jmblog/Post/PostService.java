@@ -52,4 +52,11 @@ public class PostService {
                 .orElseThrow(() -> new PostNotFoundException());
         return PostFullDto.of(post);
     }
+
+    public int likePost(long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new PostNotFoundException());
+        int likeCount = post.addLike();
+        return likeCount;
+    }
 }
