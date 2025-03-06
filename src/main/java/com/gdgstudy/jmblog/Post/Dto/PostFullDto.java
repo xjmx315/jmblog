@@ -26,7 +26,7 @@ public class PostFullDto {
     }
 
     public static PostFullDto of(Post post){
-        post.addViewCount();
+        post.addViewCount();//캐시
         return PostFullDto.builder()
                 .title(post.getTitle())
                 .content(post.getContent())

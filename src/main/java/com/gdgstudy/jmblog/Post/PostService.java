@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -54,7 +53,7 @@ public class PostService {
         PostFullDto postFullDto = PostFullDto.of(post);
         postRepository.save(post);
         return postFullDto;
-    }
+    }//redis
 
     @Transactional
     public int likePost(long id) {

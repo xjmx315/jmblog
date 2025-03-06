@@ -29,7 +29,7 @@ public class Post extends BaseTimeEntity {
     public Post(String title, String content, int viewCount, int liked, Users users){
         this.title = title;
         this.content = content;
-        this.viewCount = viewCount;
+        this.viewCount = viewCount; //조회수 순 정렬을 위해서는 따로 나눠야 할 수 있음.
         this.liked = liked;
         this.users = users;
     }
