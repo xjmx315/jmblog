@@ -1,6 +1,6 @@
 # Intro
 안녕하세요. 재민 블로그 프로젝트 입니다. 
-GDGoc 스터디 활동의 일환으로 스프링 개발 실습 목적으로 만든 재민이의 첫 프로젝트!
+GDGoc 스터디 활동의 일환으로 스프링 개발 실습 목적으로 제작하였습니다.
 읽어주셔서 감사합니다. 
 
 #### email: hahapjm1234@gmail.com
@@ -33,38 +33,69 @@ json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다
 | /user/signIn | Post   |         |          |
 | /user/me     | Get    |         |          |
 
-
-
-(Post)
-/user
-(Request)
-
->
+### /user/signUp
+*Request*
+```json
 {
   "name" : "jaemin",
   "email" : "jaemin@aa.com",
   "passwd" : "1234"
 }
+```
+*Respons - 성공*
+```json
+{
+    "code": 201,
+    "msg": "user created"
+}
+```
+*Respons - user name 중복*
+```json
+{
+    "code": 202,
+    "msg": "Duplicate Username"
+}
+```
 
-(Respons)
->
-"회원가입 성공"
 
->"회원가입 실패
+### /user/signIn
+*Request*
+```json
+{
+    "username" : "jaemin",
+    "passwd": "1234"
+}
+```
+*Respons - 성공*
+```json
+{
+    "code": 200,
+    "msg": "login completed"
+}
+```
+*Respons - 비밀번호 오류*
+```json
+{
+    "code": 401,
+    "msg": "This User Have Not Permission For"
+}
+```
+*Respons - 없는 유저*
+```json
+{
+    "code": 404,
+    "msg": "User Not Found"
+}
+```
 
-/user/signIn
-(Request)
->
->{
->  "name" : "jaemin",
->  "passwd" : "1234"
->}
-
-(Reponse)
->"로그인 성공"
->"로그인 실패: 아이디가 존재하지 않습니다. "
->"로그인 실패: 비밀번호가 올바르지 않습니다. "
-
+### /user/me
+*Respons - 성공*
+```json
+{
+    "code": 200,
+    "msg": "jaemin2"
+}
+```
 
 ## 2. post
 | URL             | Method | Request | Response |
@@ -74,3 +105,81 @@ json 형태의 데이터가 제공됩니다. 기본적인 format을 따릅니다
 | /post/{Id}      | Get    |         |          |
 | /post/{Id}      | Delete |         |          |
 | /post/like/{Id} | Get    |         |          |
+
+
+### /post/new
+*Request*
+```json
+{
+    "title" : "TEST",
+    "content" : "hello world!"
+}
+```
+
+*Respons - 성공*
+```json
+{
+    "code": 201,
+    "msg": "Posted"
+}
+```
+
+### /post/mine
+*Respons - 성공*
+```json
+{
+    "code": 200,
+    "msg": "your posts",
+    "data": [
+        {
+            "title": "TEST",
+            "viewCount": 4,
+            "liked": 0,
+            "id": 1,
+            "createdDate": "2025-03-06T15:45:27.408925"
+        },
+        {
+            "title": "TEST2",
+            "viewCount": 0,
+            "liked": 0,
+            "id": 2,
+            "createdDate": "2025-03-06T15:46:59.348856"
+        }
+    ]
+}
+
+```
+
+### /post/{id}
+*(get)Respons - 성공*
+```json
+{
+    "code": 200,
+    "msg": "post returned",
+    "data": {
+        "title": "TEST",
+        "content": "hello world!",
+        "viewCount": 4,
+        "liked": 0,
+        "id": 1,
+        "createdDate": "2025-03-06T15:45:27.408925"
+    }
+}
+```
+*(delete)Respons - 성공*
+```json
+{
+    "code": 201,
+    "msg": "Post Deleted"
+}
+```
+
+### /like/{id}
+*(get)Respons - 성공*
+```json
+{
+    "code": 201,
+    "msg": "like is turned to 1",
+    "data": 1
+}
+```
